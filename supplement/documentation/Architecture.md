@@ -1,4 +1,10 @@
 # Architecture
+Architecture based on [requirements](./Requirements.md).
+
+## Diagram
+
+![microservice diagram](./diagram/microservices.png)
+![service interactions diagram](./diagram/service-interactions.png)
 
 ## Services
 
@@ -13,26 +19,28 @@ Communicates with other services via RESTful APIs or message queues for user-rel
 | Database Type          | Explanation                                                                                             |
 |------------------------|---------------------------------------------------------------------------------------------------------|
 | SQL (e.g. PostgresSQL) | Storing user data, profiles, and authentication details often benefits from relational data structures. |
+| NoSQL (e.g. Redis)     | Expiry mechanism (TTL) for user sessions and low latency.                                               |
 
 
 ### Ecommerce Product Catalog Service (EPCS)
 Manages product information, including listings, descriptions, images, and pricing.
 
 #### Communication
-Communicates with the Shopping Cart and Order Management services for displaying products and updating stock.
+Communicates with the Inventory Management service for displaying products and updating stock.
 
 #### Database
 
-| Database Type        | Explanation                                                                           |
-|----------------------|---------------------------------------------------------------------------------------|
-| NoSQL (e.g. MongoDB) | Flexible schema for handling various product attributes and allowing for scalability. |
+| Database Type            | Explanation                                                                           |
+|--------------------------|---------------------------------------------------------------------------------------|
+| NoSQL (e.g. MongoDB)     | Flexible schema for handling various product attributes and allowing for scalability. |
+| Object Storage (e.g. S3) | Storing images with high data availability.                                           |
 
 
 ### Ecommerce Order Management Service (EOMS)
 Manages the order lifecycle, including order creation, payment processing, order fulfillment, and tracking.
 
 #### Communication
-Communicates with User Management, Shopping Cart, and Payment Gateway services for order-related actions and updates.
+Communicates with User Management, and Payment Gateway services for order-related actions and updates.
 
 #### Database
 
@@ -58,7 +66,7 @@ Communicates with Order Management and User Management services for payment auth
 Handles user shopping carts, including adding/removing items, calculating totals, and storing cart state.
 
 #### Communication
-Interacts with User Management and Payment Gateway services for cart actions and order placement.
+Interacts with the User Management, Product Catalog, Inventory Management and Order Management services for cart actions and order placement.
 
 #### Database
 
@@ -71,7 +79,7 @@ Interacts with User Management and Payment Gateway services for cart actions and
 Manages product stock levels, tracks inventory, and updates the Product Catalog service with availability information.
 
 #### Communication
-Communicates with the Order Management and Product Catalog services for real-time stock updates.
+Communicates with the User Management and Product Catalog services for real-time stock updates.
 
 #### Database
 
