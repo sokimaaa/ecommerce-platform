@@ -13,6 +13,6 @@ See [description](./TASK.md).
 - [Deployment](supplement/)
 - [Tests](supplement/)
 - [Monitoring](supplement/)
-- [Endpoints](supplement/)
+- [Endpoints](supplement/documentation/Endpoint.md)
 - [Configurations](supplement/)
 - [Profiles](supplement/)
