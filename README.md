@@ -1,10 +1,7 @@
 # E-commerce platform project
-[description](./TASK.md)
+See [description](./TASK.md).
 
 ## Technologies
-
-- Java 17 
-- Maven
 
 ## Decisions
 

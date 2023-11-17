@@ -28,7 +28,8 @@ Interactions:
 - get the count of product
 - allocation the space for a new product
 - supply the products
-- inform product catalog about updates.
+- inform product catalog about updates
+- registration a new warehouse
 
 Gets the `productId` and the `supplyCount` from outside.
 

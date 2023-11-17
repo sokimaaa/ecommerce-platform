@@ -6,6 +6,12 @@ Architecture based on [requirements](./Requirements.md).
 ![microservice diagram](./diagram/microservices.png)
 ![service interactions diagram](./diagram/service-interactions.png)
 
+## Database Decisions
+See [docs](./Database.md).
+
+## Communication Decisions
+See [docs](./Communication.md).
+
 ## Services
 
 ### Ecommerce User Management Service (EUMS)
@@ -16,10 +22,10 @@ Communicates with other services via RESTful APIs or message queues for user-rel
 
 #### Database 
 
-| Database Type          | Explanation                                                                                             |
-|------------------------|---------------------------------------------------------------------------------------------------------|
-| SQL (e.g. PostgresSQL) | Storing user data, profiles, and authentication details often benefits from relational data structures. |
-| NoSQL (e.g. Redis)     | Expiry mechanism (TTL) for user sessions and low latency.                                               |
+| Database Type         | Explanation                                                                                             |
+|-----------------------|---------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Storing user data, profiles, and authentication details often benefits from relational data structures. |
+| NoSQL (e.g. Redis)    | Expiry mechanism (TTL) for user sessions and low latency.                                               |
 
 
 ### Ecommerce Product Catalog Service (EPCS)
@@ -44,9 +50,9 @@ Communicates with User Management, and Payment Gateway services for order-relate
 
 #### Database
 
-| Database Type          | Explanation                                                                                                                                |
-|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| SQL (e.g. PostgresSQL) | Orders often have well-defined structures with relationships to users and products. SQL databases handle such structured data efficiently. |
+| Database Type         | Explanation                                                                                                                                |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Orders often have well-defined structures with relationships to users and products. SQL databases handle such structured data efficiently. |
 
 
 ### Ecommerce Payment Gateway Service (EPGS)
@@ -57,12 +63,12 @@ Communicates with Order Management and User Management services for payment auth
 
 #### Database
 
-| Database Type          | Explanation                                                                                        |
-|------------------------|----------------------------------------------------------------------------------------------------|
-| SQL (e.g. PostgresSQL) | Transactional data like payments requires ACID compliance, making SQL databases a suitable choice. |
+| Database Type         | Explanation                                                                                        |
+|-----------------------|----------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Transactional data like payments requires ACID compliance, making SQL databases a suitable choice. |
 
 
-### *tobedone* Ecommerce Shopping Cart Service (ESCS)
+### Ecommerce Shopping Cart Service (ESCS)
 Handles user shopping carts, including adding/removing items, calculating totals, and storing cart state.
 
 #### Communication
@@ -75,7 +81,7 @@ Interacts with the User Management, Product Catalog, Inventory Management and Or
 | NoSQL (e.g. MongoDB) | Cart data can be transient and often involves complex structures like nested items. NoSQL databases are suitable for handling such data. |
 
 
-### *tobedone* Ecommerce Inventory Management Service (EIMS)
+### Ecommerce Inventory Management Service (EIMS)
 Manages product stock levels, tracks inventory, and updates the Product Catalog service with availability information.
 
 #### Communication
@@ -83,7 +89,7 @@ Communicates with the User Management and Product Catalog services for real-time
 
 #### Database
 
-| Database Type          | Explanation                                                                                                  |
-|------------------------|--------------------------------------------------------------------------------------------------------------|
-| SQL (e.g. PostgresSQL) | Inventory data often involves structured information like product quantities, making SQL databases suitable. |
+| Database Type         | Explanation                                                                                                  |
+|-----------------------|--------------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Inventory data often involves structured information like product quantities, making SQL databases suitable. |
 
