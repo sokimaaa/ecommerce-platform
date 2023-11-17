@@ -49,9 +49,10 @@ with Kafka:
 
 - Implement fault tolerance mechanisms, such as circuit breakers (e.g., Netflix Hystrix) and retries, to ensure system resilience.
 
-#### Monitoring and Logging
+#### Observability
 
 - Set up monitoring and logging for your microservices to track system performance, errors, and issues. Consider using tools like Prometheus, Grafana, ELK stack, or other suitable options.
+- Set up distributed System tracing
 
 #### Testing
     
