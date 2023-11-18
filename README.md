@@ -14,5 +14,6 @@ See [description](./TASK.md).
 - [Tests](supplement/)
 - [Monitoring](supplement/)
 - [Endpoints](supplement/)
+- [Procedure](supplement/documentation/Procedure.md)
 - [Configurations](supplement/)
 - [Profiles](supplement/)
