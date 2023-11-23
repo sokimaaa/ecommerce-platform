@@ -25,7 +25,7 @@ public interface WarehouseManagementReactiveApi {
      *
      * @param warehouseCreationRequest - (required)
      * @param serverWebExchange        - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 201)
      */
     @Operation(
             operationId = "createWarehouse",
@@ -33,8 +33,8 @@ public interface WarehouseManagementReactiveApi {
             tags = {"createWarehouse"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "201",
+                            description = "Created",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -45,6 +45,10 @@ public interface WarehouseManagementReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid address of warehouse"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
                     )
             }
 

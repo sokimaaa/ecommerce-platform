@@ -37,6 +37,14 @@ public interface OrderExplorationReactiveApi {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = OrderHistoryExplorationResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -70,6 +78,18 @@ public interface OrderExplorationReactiveApi {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = OrderExplorationResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Order not found"
                     )
             }
     )

@@ -23,12 +23,12 @@ import reactor.core.publisher.Mono;
 public interface CartManagementReactiveApi {
 
     /**
-     * PUT /carts/{cartId}/items : Put a new item to cart
+     * PUT /carts/{cartId} : Put a new item to cart
      *
      * @param cartId             - (required)
      * @param cartPuttingRequest - (required)
      * @param serverWebExchange  - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 201)
      */
     @Operation(
             operationId = "putCartItem",
@@ -36,8 +36,8 @@ public interface CartManagementReactiveApi {
             tags = {"putCartItem"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "201",
+                            description = "Created",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = CartPuttingResponse.class)
@@ -45,16 +45,24 @@ public interface CartManagementReactiveApi {
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Invalid cart putting request"
+                            description = "Incorrect put request"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     ),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "Item to put not found"
+                            description = "Cart or item not found"
                     )
             }
     )
     @PutMapping(
-            value = "/carts/{cartId}/items",
+            value = "/carts/{cartId}",
             produces = "application/json",
             consumes = "application/json"
     )

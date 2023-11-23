@@ -23,7 +23,7 @@ public interface TransactionCompletionReactiveApi {
      *
      * @param transactionId     - (required)
      * @param serverWebExchange - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "completeTransaction",
@@ -31,12 +31,20 @@ public interface TransactionCompletionReactiveApi {
             tags = {"completeTransaction"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = TransactionCompletionResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     ),
                     @ApiResponse(
                             responseCode = "404",

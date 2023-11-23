@@ -21,11 +21,11 @@ import reactor.core.publisher.Mono;
 public interface UserRegistrationReactiveApi {
 
     /**
-     * POST /registerUser : User Registration
+     * POST /user-registration : User Registration
      *
      * @param userRegistrationRequest - (required)
      * @param serverWebExchange       - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 201)
      */
     @Operation(
             operationId = "registerUser",
@@ -33,8 +33,8 @@ public interface UserRegistrationReactiveApi {
             tags = {"userRegistration", "registerUser", "userRegister"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "201",
+                            description = "Created",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -44,12 +44,16 @@ public interface UserRegistrationReactiveApi {
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Invalid registration request or such user already exist"
+                            description = "Incorrect registration request"
+                    ),
+                    @ApiResponse(
+                            responseCode = "409",
+                            description = "Already exists"
                     )
             }
     )
     @PostMapping(
-            value = "/registerUser",
+            value = "/user-registration",
             produces = "application/json",
             consumes = "application/json"
     )

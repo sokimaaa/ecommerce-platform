@@ -38,6 +38,18 @@ public interface InventoryExplorationReactiveApi {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = InventoryExplorationResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Warehouse or inventory not found"
                     )
             }
     )

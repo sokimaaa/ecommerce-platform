@@ -77,6 +77,10 @@ public interface ProductExplorationReactiveApi {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = SingleProductExplorationResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Product not found"
                     )
             }
     )

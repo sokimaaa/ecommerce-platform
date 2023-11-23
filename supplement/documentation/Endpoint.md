@@ -8,8 +8,8 @@ Platform endpoint contract and goals.
 - User modification : the user modification, e.g. change username, change password
 
 `api/v1`:
-- `POST /registerUser`
-- `POST /authUser`
+- `POST /user-registration`
+- `POST /user-authentication`
 - `PATCH /users/{userId}/username`
 - `PATCH /users/{userId}/password`
 
@@ -82,7 +82,7 @@ Platform endpoint contract and goals.
 - `POST /carts/{cartId}`
 - `DELETE /carts/{cartId}/items`
 - `DELETE /carts/{cartId}/items/{itemId}`
-- `PUT /carts/{cartId}/items`
+- `PUT /carts/{cartId}`
 
 > see for [cart explore contract](../../specification/spec-rest-cart-explore)
 > see for [cart checkout contract](../../specification/spec-rest-cart-checkout)

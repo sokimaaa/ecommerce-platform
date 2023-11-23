@@ -31,7 +31,7 @@ public interface InventoryManagementReactiveApi {
      * @param inventoryId                - (required)
      * @param inventorySupplementRequest - (required)
      * @param serverWebExchange          - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "supplyInventory",
@@ -39,8 +39,8 @@ public interface InventoryManagementReactiveApi {
             tags = {"supplyInventory"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = InventorySupplementResponse.class)
@@ -49,6 +49,14 @@ public interface InventoryManagementReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid supplement request"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     ),
                     @ApiResponse(
                             responseCode = "404",
@@ -76,7 +84,7 @@ public interface InventoryManagementReactiveApi {
      * @param warehouseId                - (required)
      * @param inventoryAllocationRequest - (required)
      * @param serverWebExchange          - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 201)
      */
     @Operation(
             operationId = "allocateInventory",
@@ -84,8 +92,8 @@ public interface InventoryManagementReactiveApi {
             tags = {"allocateInventory"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "201",
+                            description = "Created",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = InventoryAllocationResponse.class)
@@ -94,6 +102,10 @@ public interface InventoryManagementReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid allocation request"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
                     ),
                     @ApiResponse(
                             responseCode = "404",

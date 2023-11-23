@@ -29,7 +29,7 @@ public interface UserModificationReactiveApi {
      * @param userId                      - (required)
      * @param usernameModificationRequest - (required)
      * @param serverWebExchange           - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "modifyUserUsername",
@@ -37,8 +37,8 @@ public interface UserModificationReactiveApi {
             tags = {"modifyUsername", "modifyUserUsername"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -49,6 +49,14 @@ public interface UserModificationReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid modification request or illegal modification"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -57,7 +65,7 @@ public interface UserModificationReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<UsernameModificationResponse>> modifyUsername(
+    default Mono<ResponseEntity<UsernameModificationResponse>> modify(
             @Parameter(name = "userId", required = true) @PathVariable("userId") final Long userId,
             @Parameter(name = "usernameModificationRequest", required = true) @Valid @RequestBody UsernameModificationRequest usernameModificationRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
@@ -71,7 +79,7 @@ public interface UserModificationReactiveApi {
      * @param userId                      - (required)
      * @param passwordModificationRequest - (required)
      * @param serverWebExchange           - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "modifyUserPassword",
@@ -79,8 +87,8 @@ public interface UserModificationReactiveApi {
             tags = {"modifyPassword", "modifyUserPassword"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -91,6 +99,14 @@ public interface UserModificationReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid modification request or illegal modification"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -99,7 +115,7 @@ public interface UserModificationReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<PasswordModificationResponse>> modifyPassword(
+    default Mono<ResponseEntity<PasswordModificationResponse>> modify(
             @Parameter(name = "userId", required = true) @PathVariable("userId") final Long userId,
             @Parameter(name = "passwordModificationRequest", required = true) @Valid @RequestBody PasswordModificationRequest passwordModificationRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange

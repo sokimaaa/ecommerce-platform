@@ -16,14 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
-
 @Validated
 @Tag(name = "authUser", description = "the reactive userAuth API")
 public interface UserAuthenticationReactiveApi {
 
     /**
-     * POST /authUser : User Authentication
+     * POST /user-authentication : User Authentication
      *
      * @param userAuthRequest   - (required)
      * @param serverWebExchange - (optional)
@@ -46,12 +44,16 @@ public interface UserAuthenticationReactiveApi {
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Invalid authentication request"
+                            description = "Incorrect request body"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Invalid authentication credentials"
                     )
             }
     )
     @PostMapping(
-            value = "/authUser",
+            value = "/user-authentication",
             produces = "application/json",
             consumes = "application/json"
     )

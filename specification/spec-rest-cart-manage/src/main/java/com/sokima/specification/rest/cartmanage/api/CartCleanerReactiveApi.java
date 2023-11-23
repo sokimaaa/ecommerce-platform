@@ -23,7 +23,7 @@ public interface CartCleanerReactiveApi {
      *
      * @param cartId            - (required)
      * @param serverWebExchange - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 204, 205)
      */
     @Operation(
             operationId = "cleanCart",
@@ -31,12 +31,32 @@ public interface CartCleanerReactiveApi {
             tags = {"cleanCart"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "204",
+                            description = "No content to reset",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = CartCleanerResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "205",
+                            description = "Reset cart content",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = CartCleanerResponse.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Cart not found"
                     )
             }
     )
@@ -58,7 +78,7 @@ public interface CartCleanerReactiveApi {
      * @param cartId            - (required)
      * @param itemId            - (required)
      * @param serverWebExchange - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 204, 205)
      */
     @Operation(
             operationId = "cleanCartItem",
@@ -66,16 +86,32 @@ public interface CartCleanerReactiveApi {
             tags = {"cleanCartItem"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "204",
+                            description = "No content to reset",
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = CartCleanerResponse.class)
                             )
                     ),
                     @ApiResponse(
+                            responseCode = "205",
+                            description = "Reset cart content",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = CartCleanerResponse.class)
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
+                    ),
+                    @ApiResponse(
                             responseCode = "404",
-                            description = "Item does not exist already"
+                            description = "Cart or item not found"
                     )
             }
     )

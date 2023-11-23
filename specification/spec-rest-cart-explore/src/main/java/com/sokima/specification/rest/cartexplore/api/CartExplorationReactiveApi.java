@@ -37,6 +37,18 @@ public interface CartExplorationReactiveApi {
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = CartItemsExplorationResponse.class)
                             )
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Cart not found"
                     )
             }
     )

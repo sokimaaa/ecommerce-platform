@@ -31,7 +31,7 @@ public interface ProductModificationReactiveApi {
      * @param productId               - (required)
      * @param nameModificationRequest - (required)
      * @param serverWebExchange       - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "modifyProductName",
@@ -39,8 +39,8 @@ public interface ProductModificationReactiveApi {
             tags = {"modifyProductName", "modifyName"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -50,7 +50,15 @@ public interface ProductModificationReactiveApi {
                     ),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Invalid modification request or illegal modification"
+                            description = "Incorrect modification request or illegal modification"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -59,7 +67,7 @@ public interface ProductModificationReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<NameModificationResponse>> modifyName(
+    default Mono<ResponseEntity<NameModificationResponse>> modify(
             @Parameter(name = "productId", required = true) @PathVariable("productId") final Long productId,
             @Parameter(name = "nameModificationRequest", required = true) @Valid @RequestBody NameModificationRequest nameModificationRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
@@ -73,7 +81,7 @@ public interface ProductModificationReactiveApi {
      * @param productId                      - (required)
      * @param descriptionModificationRequest - (required)
      * @param serverWebExchange              - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "modifyProductDescription",
@@ -81,8 +89,8 @@ public interface ProductModificationReactiveApi {
             tags = {"modifyProductDescription", "modifyDescription"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -93,6 +101,14 @@ public interface ProductModificationReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid modification request or illegal modification"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -101,7 +117,7 @@ public interface ProductModificationReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<DescriptionModificationResponse>> modifyDescription(
+    default Mono<ResponseEntity<DescriptionModificationResponse>> modify(
             @Parameter(name = "productId", required = true) @PathVariable("productId") final Long productId,
             @Parameter(name = "descriptionModificationRequest", required = true) @Valid @RequestBody DescriptionModificationRequest descriptionModificationRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
@@ -115,7 +131,7 @@ public interface ProductModificationReactiveApi {
      * @param productId                - (required)
      * @param priceModificationRequest - (required)
      * @param serverWebExchange        - (optional)
-     * @return OK (status code 200)
+     * @return OK (status code 202)
      */
     @Operation(
             operationId = "modifyProductPrice",
@@ -123,8 +139,8 @@ public interface ProductModificationReactiveApi {
             tags = {"modifyProductPrice", "modifyPrice"},
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "OK",
+                            responseCode = "202",
+                            description = "Accepted",
                             content = {
                                     @Content(
                                             mediaType = "application/json",
@@ -135,6 +151,14 @@ public interface ProductModificationReactiveApi {
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid modification request or illegal modification"
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Unauthorized"
+                    ),
+                    @ApiResponse(
+                            responseCode = "403",
+                            description = "Forbidden"
                     )
             }
     )
@@ -143,7 +167,7 @@ public interface ProductModificationReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<PriceModificationResponse>> modifyPrice(
+    default Mono<ResponseEntity<PriceModificationResponse>> modify(
             @Parameter(name = "productId", required = true) @PathVariable("productId") final Long productId,
             @Parameter(name = "priceModificationRequest", required = true) @Valid @RequestBody PriceModificationRequest priceModificationRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
