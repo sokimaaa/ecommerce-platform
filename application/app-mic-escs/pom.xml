@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sokima.domain.service</groupId>
-    <artifactId>product-domain-service</artifactId>
+    <groupId>com.sokima.application.microservice</groupId>
+    <artifactId>app-mic-escs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dom-service-product</name>
-    <description>dom-service-product</description>
+    <name>app-mic-escs</name>
+    <description>app-mic-escs</description>
 
     <properties>
         <java.version>17</java.version>
@@ -18,14 +18,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sokima.domain.model</groupId>
-            <artifactId>pojo-ecommerce-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sokima.domain.persistent</groupId>
-            <artifactId>product-persistent-adapter</artifactId>
+            <groupId>com.sokima.domain.service</groupId>
+            <artifactId>cart-domain-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
