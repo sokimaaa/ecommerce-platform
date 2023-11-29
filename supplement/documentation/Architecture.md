@@ -1,10 +1,65 @@
 # Architecture
 Architecture based on [requirements](./Requirements.md).
 
-## Diagram
+## Microservice Architecture
+
+### Diagram
 
 ![microservice diagram](./diagram/microservices.png)
 ![service interactions diagram](./diagram/service-interactions.png)
+
+## Onion Architecture
+
+### Motivation
+
+Onion architecture implements Domain-driven Design (DDD) concept 
+and dramatically increases code quality, reduces complexity and enables evolutionary enterprise systems.
+
+The Onion architecture is build on a domain model in which layers are connected through interfaces.
+
+The idea is to keep external dependencies (e.g. Spring Framework) as far outward as possible 
+to make easier switching to a new framework or technology 
+and as result making business logic independent on technologies were used.
+
+Strengthening the knowledge and skills on Domain-driven Design (DDD) and Onion Architecture in action.
+
+### Diagram
+
+![onion architecture circles](./diagram/onion-circles.jpg)
+![onion architecture dependency illustration](./diagram/onion-dependency-illustration.jpg)
+
+### Core concepts
+
+`The circles` represent different layers of responsibility. The outer circles represent mechanism, and the inner circles represent core domain logic.
+
+`The adapters` represent entry-point to the entire application, e.g. REST, gRPC and so on. 
+It handles incoming requests (e.g. Web API) or outgoing requests (e.g. Persistence).
+
+`The use cases` represent specific functionality, e.g. Create Order, 
+which depends on multiple business rules like `validate order`, `calculate tax`, `persist order`, `notify`, and so on.
+
+---
+
+`The Domain Model Circle` defines the fundamental building block of Domain-Driven Design. 
+It is supposed to be independent of specific technologies like database, or web apis.
+
+`The Domain Service Circle` defines the interfaces to manipulate domain logic and business rules, 
+and to be propagated to outer circles.
+
+`The Application Service Circle` defines the interfaces to manipulate the Use Cases, 
+and orchestrates the Domain Service Circle.
+
+`The Infastructure Service Circle` exposes the Adapters to interact with the external world, 
+and orchestrates the Application Service Circle.
+
+### Representation in Code
+
+`The Domain Model Circle` and `The Domain Service Circle` represents the package `domain`. 
+These circles were merged for sake of simplicity, because this project was not intended to evolve.
+
+`The Application Circle` represents the package `application`.
+
+`The Infrastructure Circle` represents the package `infrastructure`.
 
 ## Database Decisions
 See [docs](./Database.md).
