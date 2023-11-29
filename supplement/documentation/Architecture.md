@@ -101,6 +101,27 @@ These circles were merged for sake of simplicity, because this project was not i
 
 `The Infrastructure Circle` represents the package `infrastructure`.
 
+## Specification Driven Development (SDD)
+Specification-driven API development is a design-first approach to software development.
+
+In a spec-driven development process, the development team starts with the API specification before writing any code.
+
+This method is designed to help development teams build sensible and efficient APIs. 
+This approach allows developers to define the structure and behavior of their API before any implementation takes place.
+
+The stages of SDD:
+- Designing the API : considering the needs of application, ways of communication (e.g. events, rpc, http), external and internal communication, versioning of api 
+
+- Writing Specification : write clear contracts using yaml, json, or interfaces
+
+- Validation of Specification
+
+- Implementation of Specification
+
+The `specification` folder represents all contracts to be implemented.
+
+Were chosen the java interface option to define contract for sake of simplicity.
+
 ## Database Decisions
 See [docs](./Database.md).
 
