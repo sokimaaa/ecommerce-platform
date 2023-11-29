@@ -21,7 +21,12 @@
             <groupId>com.sokima.domain.model</groupId>
             <artifactId>pojo-ecommerce-model</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sokima.domain.persistent</groupId>
+            <artifactId>order-persistent-adapter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
