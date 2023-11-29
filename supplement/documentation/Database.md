@@ -19,7 +19,6 @@ Database structure based on [requirements](./Requirements.md).
     - Any redundant constrains, e.g. unique for PK
 
 ## Database-Per-Service Pattern
-
 This pattern allows for better separation of concerns, data isolation, and scalability.
 Each microservice manages its data independently.
 The Pattern enforces this by allocating a separate database for each microservice.
@@ -76,6 +75,11 @@ Drawbacks:
 | profile   | profile_id | int  | `-`        | PK  |
 |           | user_id    | int  | `-`        | FK  |
 
+| Database Type         | Explanation                                                                                             |
+|-----------------------|---------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Storing user data, profiles, and authentication details often benefits from relational data structures. |
+| NoSQL (e.g. Redis)    | Expiry mechanism (TTL) for user sessions and low latency.                                               |
+
 ### Ecommerce Product Catalog Service (EPCS)
 
 | table    | attribute    | type     | constraint | key |
@@ -89,6 +93,11 @@ Drawbacks:
 |          | created_at   | datetime | `-`        |     |
 |          | updated_at   | datetime | `-`        |     |
 |          | inventory_id | int      | `-`        | FK  |
+
+| Database Type            | Explanation                                                                           |
+|--------------------------|---------------------------------------------------------------------------------------|
+| NoSQL (e.g. MongoDB)     | Flexible schema for handling various product attributes and allowing for scalability. |
+| Object Storage (e.g. S3) | Storing images with high data availability.                                           |
 
 ### Ecommerce Order Management Service (EOMS)
 
@@ -114,6 +123,10 @@ Drawbacks:
 |       | quantity   | int     | `-`        |     |
 |       | price      | decimal | `-`        |     |
 
+| Database Type         | Explanation                                                                                                                                |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Orders often have well-defined structures with relationships to users and products. SQL databases handle such structured data efficiently. |
+
 ### Ecommerce Payment Gateway Service (EPGS)
 
 | table       | attribute      | type    | constraint | key |
@@ -131,6 +144,10 @@ Drawbacks:
 | method | method_id | int    | `-`        | PK  |
 |        | type      | string | `-`        |     |
 
+| Database Type         | Explanation                                                                                        |
+|-----------------------|----------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Transactional data like payments requires ACID compliance, making SQL databases a suitable choice. |
+
 ### Ecommerce Shopping Cart Service (ESCS)
 
 | table | attribute   | type     | constraint | key |
@@ -139,6 +156,10 @@ Drawbacks:
 |       | user_id     | int      | `-`        | FK  |
 |       | product_ids | int[]    | `-`        | FKs |
 |       | updated_at  | datetime | `-`        |     |
+
+| Database Type        | Explanation                                                                                                                              |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| NoSQL (e.g. MongoDB) | Cart data can be transient and often involves complex structures like nested items. NoSQL databases are suitable for handling such data. |
 
 ### Ecommerce Inventory Management Service (EIMS)
 
@@ -157,3 +178,7 @@ Drawbacks:
 |           | updated_at   | datetime | `-`        |     |
 |           | updater      | string   | `-`        |     |
 |           | quantity     | int      | `-`        |     |
+
+| Database Type         | Explanation                                                                                                  |
+|-----------------------|--------------------------------------------------------------------------------------------------------------|
+| SQL (e.g. PostgreSQL) | Inventory data often involves structured information like product quantities, making SQL databases suitable. |
