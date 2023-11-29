@@ -36,14 +36,8 @@
         </dependency>
 
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
-            <version>3.5.9</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.sokima.specification.grpc</groupId>
-            <artifactId>enveloperelay</artifactId>
+            <artifactId>envelope-relay</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -37,7 +37,7 @@
 
         <dependency>
             <groupId>com.sokima.specification.grpc</groupId>
-            <artifactId>enveloperelay</artifactId>
+            <artifactId>envelope-relay</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
