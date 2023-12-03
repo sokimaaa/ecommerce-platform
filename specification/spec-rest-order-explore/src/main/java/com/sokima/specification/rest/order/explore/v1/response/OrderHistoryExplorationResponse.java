@@ -1,7 +1,7 @@
 package com.sokima.specification.rest.order.explore.v1.response;
 
 import com.fasterxml.jackson.annotation.*;
-import com.sokima.domain.pojo.Order;
+import com.sokima.domain.model.pojo.Order;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.sokima.specification.rest.inventory.explore.v1.response;
 
 import com.fasterxml.jackson.annotation.*;
-import com.sokima.domain.pojo.Inventory;
+import com.sokima.domain.model.pojo.Inventory;
 
 import java.io.Serializable;
 import java.util.Objects;
