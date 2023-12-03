@@ -93,6 +93,8 @@ and orchestrates the Domain Service Circle.
 `The Infastructure Service Circle` exposes the Adapters to interact with the external world, 
 and orchestrates the Application Service Circle.
 
+`The Application Circle` defines the main class to boot the entire application.
+
 ### Representation in Code
 `The Domain Model Circle` and `The Domain Service Circle` represents the package `domain`. 
 These circles were merged for sake of simplicity, because this project was not intended to evolve.
@@ -100,6 +102,8 @@ These circles were merged for sake of simplicity, because this project was not i
 `The Application Circle` represents the package `application`.
 
 `The Infrastructure Circle` represents the package `infrastructure`.
+
+`The Application Circle` represents the package `bootstrap`.
 
 ## Specification Driven Development (SDD)
 Specification-driven API development is a design-first approach to software development.

@@ -1,7 +1,7 @@
 package com.sokima.specification.rest.product.explore.v1.response;
 
 import com.fasterxml.jackson.annotation.*;
-import com.sokima.domain.pojo.Product;
+import com.sokima.domain.model.pojo.Product;
 
 import java.io.Serializable;
 import java.util.List;
