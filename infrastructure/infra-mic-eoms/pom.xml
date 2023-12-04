@@ -30,6 +30,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sokima.lib</groupId>
+            <artifactId>onion-architecture-annotation</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.sokima.domain.persistent</groupId>
             <artifactId>order-persistent-adapter</artifactId>
             <version>0.0.1-SNAPSHOT</version>

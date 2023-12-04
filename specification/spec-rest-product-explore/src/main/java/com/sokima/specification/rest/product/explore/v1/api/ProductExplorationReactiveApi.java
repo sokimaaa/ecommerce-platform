@@ -46,8 +46,7 @@ public interface ProductExplorationReactiveApi {
     )
     @GetMapping(
             value = "/products",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<MultipleProductExplorationResponse>> explore(
             @Parameter(name = "filter") @RequestParam(name = "filter", required = false) final String filter,
@@ -86,8 +85,7 @@ public interface ProductExplorationReactiveApi {
     )
     @GetMapping(
             value = "/products/{productId}",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<SingleProductExplorationResponse>> explore(
             @Parameter(name = "productId", required = true) @PathVariable("productId") final Long productId,
