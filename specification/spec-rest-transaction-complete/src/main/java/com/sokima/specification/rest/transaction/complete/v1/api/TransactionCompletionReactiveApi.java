@@ -57,7 +57,7 @@ public interface TransactionCompletionReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<?>> complete(
+    default Mono<ResponseEntity<TransactionCompletionResponse>> complete(
             @Parameter(name = "transactionId", required = true) @PathVariable("transactionId") final Long transactionId,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
     ) {
