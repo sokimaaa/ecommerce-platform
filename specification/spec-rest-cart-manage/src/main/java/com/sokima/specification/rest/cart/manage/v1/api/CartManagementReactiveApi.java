@@ -66,7 +66,7 @@ public interface CartManagementReactiveApi {
             produces = "application/json",
             consumes = "application/json"
     )
-    default Mono<ResponseEntity<CartCleanerResponse>> put(
+    default Mono<ResponseEntity<CartPuttingResponse>> put(
             @Parameter(name = "cartId", required = true) @PathVariable("cartId") final Long cartId,
             @Parameter(name = "cartPuttingRequest", required = true) @Valid @RequestBody CartPuttingRequest cartPuttingRequest,
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange

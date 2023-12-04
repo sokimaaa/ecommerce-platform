@@ -1,0 +1,97 @@
+package com.sokima.infrastructure.microservice.escs.adapter.driving.rest;
+
+import com.sokima.application.microservice.escs.usecase.CartUseCase;
+import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.specification.rest.cart.checkout.v1.api.CartCheckoutReactiveApi;
+import com.sokima.specification.rest.cart.checkout.v1.request.CartCheckoutRequest;
+import com.sokima.specification.rest.cart.checkout.v1.response.CartCheckoutResponse;
+import com.sokima.specification.rest.cart.explore.v1.api.CartExplorationReactiveApi;
+import com.sokima.specification.rest.cart.explore.v1.response.CartItemsExplorationResponse;
+import com.sokima.specification.rest.cart.manage.v1.api.CartCleanerReactiveApi;
+import com.sokima.specification.rest.cart.manage.v1.api.CartManagementReactiveApi;
+import com.sokima.specification.rest.cart.manage.v1.request.CartPuttingRequest;
+import com.sokima.specification.rest.cart.manage.v1.response.CartCleanerResponse;
+import com.sokima.specification.rest.cart.manage.v1.response.CartPuttingResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+import java.util.Collections;
+
+@DrivingAdapter
+public class CartReactiveRestAdapter implements CartExplorationReactiveApi, CartManagementReactiveApi, CartCheckoutReactiveApi, CartCleanerReactiveApi {
+    private final CartUseCase cartUseCase;
+
+    public CartReactiveRestAdapter(final CartUseCase cartUseCase) {
+        this.cartUseCase = cartUseCase;
+    }
+
+    @Override
+    public Mono<ResponseEntity<CartCheckoutResponse>> checkout(
+            final Long cartId,
+            final CartCheckoutRequest cartCheckoutRequest,
+            final ServerWebExchange serverWebExchange
+    ) {
+        final var body = new CartCheckoutResponse(
+                -1L,
+                -1L,
+                -1L,
+                Boolean.FALSE
+        );
+        return Mono.just(ResponseEntity.ok(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<CartItemsExplorationResponse>> show(
+            final Long cartId,
+            final ServerWebExchange serverWebExchange
+    ) {
+        final var body = new CartItemsExplorationResponse(
+                -1L,
+                Boolean.FALSE,
+                Collections.emptyList()
+        );
+        return Mono.just(ResponseEntity.ok(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<CartCleanerResponse>> clean(
+            final Long cartId,
+            final ServerWebExchange serverWebExchange
+    ) {
+        final var body = new CartCleanerResponse(
+                -1L,
+                Collections.emptyList(),
+                Boolean.FALSE
+        );
+        return Mono.just(ResponseEntity.ok(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<CartCleanerResponse>> clean(
+            final Long cartId,
+            final Long itemId,
+            final ServerWebExchange serverWebExchange
+    ) {
+        final var body = new CartCleanerResponse(
+                -1L,
+                Collections.emptyList(),
+                Boolean.FALSE
+        );
+        return Mono.just(ResponseEntity.ok(body));
+    }
+
+    @Override
+    public Mono<ResponseEntity<CartPuttingResponse>> put(
+            final Long cartId,
+            final CartPuttingRequest cartPuttingRequest,
+            final ServerWebExchange serverWebExchange
+    ) {
+        final var body = new CartPuttingResponse(
+                -1L,
+                -1L,
+                Boolean.FALSE
+        );
+        return Mono.just(ResponseEntity.ok(body));
+    }
+}
