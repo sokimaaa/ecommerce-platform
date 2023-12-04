@@ -50,8 +50,7 @@ public interface OrderExplorationReactiveApi {
     )
     @GetMapping(
             value = "/orders",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<OrderHistoryExplorationResponse>> show(
             @Parameter(hidden = true) final ServerWebExchange serverWebExchange
@@ -95,8 +94,7 @@ public interface OrderExplorationReactiveApi {
     )
     @GetMapping(
             value = "/orders/{orderId}/items",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<OrderExplorationResponse>> show(
             @Parameter(name = "orderId", required = true) @PathVariable("orderId") final Long orderId,

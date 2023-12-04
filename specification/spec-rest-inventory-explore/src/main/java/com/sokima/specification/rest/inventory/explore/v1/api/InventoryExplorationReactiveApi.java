@@ -55,8 +55,7 @@ public interface InventoryExplorationReactiveApi {
     )
     @GetMapping(
             value = "/warehouses/{warehouseId}/inventories/{inventoryId}",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<InventoryExplorationResponse>> explore(
             @Parameter(name = "warehouseId", required = true) @PathVariable("warehouseId") final Long warehouseId,

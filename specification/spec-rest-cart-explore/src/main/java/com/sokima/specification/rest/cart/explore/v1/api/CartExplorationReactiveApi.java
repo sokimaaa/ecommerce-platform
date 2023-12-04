@@ -54,8 +54,7 @@ public interface CartExplorationReactiveApi {
     )
     @GetMapping(
             value = "/carts/{cartId}/items",
-            produces = "application/json",
-            consumes = "application/json"
+            produces = "application/json"
     )
     default Mono<ResponseEntity<CartItemsExplorationResponse>> show(
             @Parameter(name = "cartId", required = true) @PathVariable("cartId") final Long cartId,
