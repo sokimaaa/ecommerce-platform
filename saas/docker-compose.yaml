@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  mic-eims-1:
+    build:
+      context: ./mic-hex-eims
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+
+  mic-eoms-1:
+    build:
+      context: ./mic-hex-eoms
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+
+  mic-epcs-1:
+    build:
+      context: ./mic-hex-epcs
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8200:8200"
+
+  mic-epgs-1:
+    build:
+      context: ./mic-hex-epgs
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8300:8300"
+
+  mic-escs-1:
+    build:
+      context: ./mic-hex-escs
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8400:8400"
+
+  mic-eums-1:
+    build:
+      context: ./mic-hex-eums
+      dockerfile: ./1-docker/Dockerfile.optimal
+    restart: unless-stopped
+    ports:
+      - "8500:8500"
