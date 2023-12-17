@@ -1,4 +1,5 @@
 # E-commerce platform project
+
 See [description](./TASK.md).
 
 ## Technologies
@@ -11,30 +12,37 @@ See [description](./TASK.md).
 ## Bootstrapping the platform
 
 ### Single Service Build & Run
-First of all need to be built snapshots and pushed to local repo by 
+
+First of all need to be built snapshots and pushed to local repo by
+
 ```
 mvn clean install
 ```
 
 Then build the bootstrap module by
+
 ```
 mvn clean package
 ```
 
 Then build docker image by
+
 ```
 docker build -t mic-<code>-image -f ./src/main/Dockerfile.optimal .
 ```
 
-Now, just run the docker image by 
+Now, just run the docker image by
+
 ```
 docker run --name mic-<code>-containter -d --rm -p $DEFAULT_PORT:$DEFAULT_PORT mic-<code>-image
 ```
 
 ### Entire Platform Build & Run
+
 Build all artifacts as described at first steps of [Single Service Build & Run](#single-service-build--run).
 
 Now, just run [docker compose](./bootstrap/docker-compose.yaml) by
+
 ```
 docker-compose up -d
 ```
@@ -51,6 +59,8 @@ docker-compose up -d
 | EPGS       | `8300`       | `83XX`                |
 | ESCS       | `8400`       | `84XX`                |
 | EUMS       | `8500`       | `85XX`                |
+| ApiGateway | `9652`       | `n/a`                 |
+| Discovery  | `9871`       | `n/a`                 |
 | Prometheus | `9090`       | `n/a`                 |
 | Grafana    | `3000`       | `n/a`                 |
 
