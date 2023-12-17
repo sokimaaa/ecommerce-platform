@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.eims.infra.adapter.driving.rest;
 
-import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivingAdapter;
 import com.sokima.saas.mic.hex.eims.spec.rest.warehouse.manage.v1.api.WarehouseManagementReactiveApi;
 import com.sokima.saas.mic.hex.eims.spec.rest.warehouse.manage.v1.request.WarehouseCreationRequest;
 import com.sokima.saas.mic.hex.eims.spec.rest.warehouse.manage.v1.response.WarehouseCreationResponse;

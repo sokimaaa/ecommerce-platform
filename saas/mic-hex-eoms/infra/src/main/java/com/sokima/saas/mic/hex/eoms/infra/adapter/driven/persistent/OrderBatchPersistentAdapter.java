@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.eoms.infra.adapter.driven.persistent;
 
-import com.sokima.lib.onion.architecture.annotation.DrivenAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivenAdapter;
 import com.sokima.saas.mic.hex.eoms.domain.persistent.port.inbound.order.UpdateBatchOrderPersistentInPort;
 import com.sokima.saas.mic.hex.eoms.domain.persistent.port.outbound.order.FindBatchOrderPersistentOutPort;
 

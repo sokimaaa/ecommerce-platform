@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.eims.infra.adapter.driving.rest;
 
-import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivingAdapter;
 import com.sokima.saas.mic.hex.eims.spec.rest.inventory.explore.v1.api.InventoryExplorationReactiveApi;
 import com.sokima.saas.mic.hex.eims.spec.rest.inventory.explore.v1.response.InventoryExplorationResponse;
 import com.sokima.saas.mic.hex.eims.spec.rest.inventory.manage.v1.api.InventoryManagementReactiveApi;

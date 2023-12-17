@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.escs.infra.adapter.driving.rest;
 
-import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivingAdapter;
 import com.sokima.saas.mic.hex.escs.spec.rest.checkout.v1.api.CartCheckoutReactiveApi;
 import com.sokima.saas.mic.hex.escs.spec.rest.checkout.v1.request.CartCheckoutRequest;
 import com.sokima.saas.mic.hex.escs.spec.rest.checkout.v1.response.CartCheckoutResponse;

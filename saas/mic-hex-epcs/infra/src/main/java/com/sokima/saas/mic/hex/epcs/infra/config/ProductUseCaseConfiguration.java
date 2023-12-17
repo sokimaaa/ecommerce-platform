@@ -1,7 +1,7 @@
 package com.sokima.saas.mic.hex.epcs.infra.config;
 
-import com.sokima.lib.onion.architecture.annotation.DomainService;
-import com.sokima.lib.onion.architecture.annotation.UseCase;
+import com.sokima.lib.hex.architecture.annotation.DomainService;
+import com.sokima.lib.hex.architecture.annotation.UseCase;
 import com.sokima.saas.mic.hex.epcs.domain.persistent.port.inbound.product.InsertProductPersistentInPort;
 import com.sokima.saas.mic.hex.epcs.domain.persistent.port.inbound.product.UpdateProductPersistentInPort;
 import com.sokima.saas.mic.hex.epcs.domain.persistent.port.outbound.product.FindBatchProductPersistentOutPort;

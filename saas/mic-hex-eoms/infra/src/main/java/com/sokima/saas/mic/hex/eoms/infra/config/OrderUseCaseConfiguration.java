@@ -1,7 +1,7 @@
 package com.sokima.saas.mic.hex.eoms.infra.config;
 
-import com.sokima.lib.onion.architecture.annotation.DomainService;
-import com.sokima.lib.onion.architecture.annotation.UseCase;
+import com.sokima.lib.hex.architecture.annotation.DomainService;
+import com.sokima.lib.hex.architecture.annotation.UseCase;
 import com.sokima.saas.mic.hex.eoms.domain.persistent.port.inbound.order.InsertOrderPersistentInPort;
 import com.sokima.saas.mic.hex.eoms.domain.persistent.port.inbound.order.UpdateBatchOrderPersistentInPort;
 import com.sokima.saas.mic.hex.eoms.domain.persistent.port.inbound.order.UpdateOrderPersistentInPort;

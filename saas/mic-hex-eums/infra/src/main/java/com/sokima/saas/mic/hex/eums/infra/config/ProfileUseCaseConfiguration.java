@@ -1,7 +1,7 @@
 package com.sokima.saas.mic.hex.eums.infra.config;
 
-import com.sokima.lib.onion.architecture.annotation.DomainService;
-import com.sokima.lib.onion.architecture.annotation.UseCase;
+import com.sokima.lib.hex.architecture.annotation.DomainService;
+import com.sokima.lib.hex.architecture.annotation.UseCase;
 import com.sokima.saas.mic.hex.eums.domain.persistent.port.inbound.profile.InsertProfilePersistentInPort;
 import com.sokima.saas.mic.hex.eums.domain.service.ProfileService;
 import com.sokima.saas.mic.hex.eums.domain.service.impl.ProfileServiceImpl;

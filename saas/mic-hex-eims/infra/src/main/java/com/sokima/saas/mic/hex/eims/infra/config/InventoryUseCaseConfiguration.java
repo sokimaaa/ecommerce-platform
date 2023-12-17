@@ -1,7 +1,7 @@
 package com.sokima.saas.mic.hex.eims.infra.config;
 
-import com.sokima.lib.onion.architecture.annotation.DomainService;
-import com.sokima.lib.onion.architecture.annotation.UseCase;
+import com.sokima.lib.hex.architecture.annotation.DomainService;
+import com.sokima.lib.hex.architecture.annotation.UseCase;
 import com.sokima.saas.mic.hex.eims.domain.persistent.port.inbound.inventory.InsertInventoryPersistentInPort;
 import com.sokima.saas.mic.hex.eims.domain.persistent.port.inbound.inventory.UpdateInventoryPersistentInPort;
 import com.sokima.saas.mic.hex.eims.domain.persistent.port.outbound.inventory.FindInventoryPersistentOutPort;

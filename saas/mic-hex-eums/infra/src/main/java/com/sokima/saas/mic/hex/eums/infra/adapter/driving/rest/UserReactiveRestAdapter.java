@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.eums.infra.adapter.driving.rest;
 
-import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivingAdapter;
 import com.sokima.saas.mic.hex.eums.spec.rest.auth.v1.api.UserAuthenticationReactiveApi;
 import com.sokima.saas.mic.hex.eums.spec.rest.auth.v1.api.UserRegistrationReactiveApi;
 import com.sokima.saas.mic.hex.eums.spec.rest.auth.v1.request.UserAuthRequest;

@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.epcs.infra.adapter.driving.rest;
 
-import com.sokima.lib.onion.architecture.annotation.DrivingAdapter;
+import com.sokima.lib.hex.architecture.annotation.DrivingAdapter;
 import com.sokima.saas.mic.hex.epcs.spec.rest.explore.v1.api.ProductExplorationReactiveApi;
 import com.sokima.saas.mic.hex.epcs.spec.rest.explore.v1.response.MultipleProductExplorationResponse;
 import com.sokima.saas.mic.hex.epcs.spec.rest.explore.v1.response.SingleProductExplorationResponse;
