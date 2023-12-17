@@ -1,4 +1,4 @@
-package com.sokima.lib.onion.architecture.annotation;
+package com.sokima.lib.hex.architecture.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

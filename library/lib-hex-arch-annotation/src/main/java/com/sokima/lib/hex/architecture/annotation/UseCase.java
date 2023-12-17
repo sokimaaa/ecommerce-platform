@@ -1,4 +1,4 @@
-package com.sokima.lib.onion.architecture.annotation;
+package com.sokima.lib.hex.architecture.annotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Bean
 @Component
-@Target({ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DrivenAdapter {
+public @interface UseCase {
 }
