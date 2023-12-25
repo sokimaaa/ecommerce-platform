@@ -33,6 +33,12 @@
             <artifactId>mic-hex-eoms-infra</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.sokima.lib</groupId>
+            <artifactId>discovery-client-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
