@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiscoveryStarter {
+public class DiscoveryServerStarter {
     public static void main(String[] args) {
-        SpringApplication.run(DiscoveryStarter.class, args);
+        SpringApplication.run(DiscoveryServerStarter.class, args);
     }
 }
