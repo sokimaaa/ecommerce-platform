@@ -28,7 +28,6 @@ public class OrderUseCaseConfiguration {
 
     @DomainService
     OrderService orderService(
-            final OrderService orderService,
             final FindBatchOrderPersistentOutPort findOrderPersistentAdapter,
             final InsertOrderPersistentInPort insertOrderPersistentAdapter,
             final UpdateOrderPersistentInPort updateOrderPersistentAdapter,
