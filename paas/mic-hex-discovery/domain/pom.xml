@@ -16,7 +16,6 @@
             <groupId>com.sokima.lib</groupId>
             <artifactId>hexagonal-architecture-annotation</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
