@@ -9,12 +9,16 @@ import com.sokima.saas.mic.hex.eims.spec.rest.inventory.manage.v1.request.Invent
 import com.sokima.saas.mic.hex.eims.spec.rest.inventory.manage.v1.response.InventoryAllocationResponse;
 import com.sokima.saas.mic.hex.eims.spec.rest.inventory.manage.v1.response.InventorySupplementResponse;
 import com.sokima.saas.mic.hex.eims.usecase.InventoryUseCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @DrivingAdapter
 public class InventoryReactiveRestAdapter implements InventoryExplorationReactiveApi, InventoryManagementReactiveApi {
+    private static final Logger log = LoggerFactory.getLogger(InventoryReactiveRestAdapter.class);
+
     private final InventoryUseCase inventoryUseCase;
 
     public InventoryReactiveRestAdapter(final InventoryUseCase inventoryUseCase) {
@@ -27,13 +31,18 @@ public class InventoryReactiveRestAdapter implements InventoryExplorationReactiv
             final Long inventoryId,
             final ServerWebExchange serverWebExchange
     ) {
+        log.debug("Inbound InventoryExplorationRequest[warehouseId={},inventoryId={}]", warehouseId, inventoryId);
         final var body = new InventoryExplorationResponse(
                 -1L,
                 -1L,
                 Boolean.FALSE,
                 null
         );
-        return Mono.just(ResponseEntity.ok(body));
+        return Mono.just(body)
+                .doOnNext(x -> log.debug("Outbound InventoryExplorationResponse[body={}]", x))
+                .map(ResponseEntity::ok)
+                .doOnError(ex -> log.warn("Error occurred while inventory exploration: ", ex))
+                .doOnSuccess(x -> log.info("InventoryExplorationRequest[warehouseId={},inventoryId={}] was processed successfully.", warehouseId, inventoryId));
     }
 
     @Override
