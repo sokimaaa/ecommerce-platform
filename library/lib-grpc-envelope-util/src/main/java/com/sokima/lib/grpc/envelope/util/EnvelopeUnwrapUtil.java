@@ -3,9 +3,10 @@ package com.sokima.lib.grpc.envelope.util;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.sokima.lib.grpc.envelope.relay.api.v1.Envelope;
+import com.sokima.lib.grpc.envelope.relay.api.v1.Header;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public final class EnvelopeUnwrapUtil {
 
@@ -25,9 +26,10 @@ public final class EnvelopeUnwrapUtil {
         return envelope.getHeaderList()
                 .stream()
                 .collect(
-                        ConcurrentHashMap::new,
-                        (x, y) -> x.put(y.getValue(), y.getKey()),
-                        (x, y) -> y.forEach(x::putIfAbsent)
+                        Collectors.toMap(
+                                Header::getKey,
+                                Header::getValue
+                        )
                 );
     }
 }
