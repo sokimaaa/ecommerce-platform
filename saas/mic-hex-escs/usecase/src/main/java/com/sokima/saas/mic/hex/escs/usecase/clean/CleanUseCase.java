@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
 
-public class CleanUseCase {
+public final class CleanUseCase {
 
     private static final Logger log = LoggerFactory.getLogger(CleanUseCase.class);
 
