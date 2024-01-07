@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.sokima.lib.proto.spec.eoms;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "com.sokima.lib.proto.spec.eoms";
+
+message Order {
+  int64 orderId = 1;
+  string status = 2;
+  string total = 3;
+  string shippingAddress = 4;
+  string postalTrackingId = 5;
+  string paymentMethod = 6;
+  repeated int64 itemIds = 7;
+  int64 userId = 8;
+  google.protobuf.Timestamp createdAt = 9;
+  google.protobuf.Timestamp updatedAt = 10;
+  string updater = 11;
+}
+
+message Item {
+  int64 itemId = 1;
+  int64 orderId = 2;
+  int64 productId = 3;
+  int32 quantity = 4;
+  float price = 5;
+}
+
+message InitiateOrderCreation {
+  int64 userId = 1;
+  repeated int64 productIds = 2;
+  string shippingAddress = 3;
+  string paymentMethod = 4;
+}
+
+message CompletionOrderCreation {
+  int64 cartId = 1;
+
+  int64 transactionId = 2;
+
+  int64 orderId = 3;
+
+  bool ok = 4;
+}

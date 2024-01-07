@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor User as U
+participant ESCS
+participant EOMS
+participant EPGS
+participant EPCS
+participant EIMS
+database Cart as CDB
+database Order as ODB
+database Transaction as TDB
+database Product as PDB
+queue Notification as N
+
+autonumber
+
+U -> ESCS: checkout request
+
+activate ESCS
+
+ESCS -> CDB: get cart
+ESCS <-- CDB: cart
+
+ESCS -> ESCS: validate cart
+
+ESCS -> ESCS: compose create order request
+
+ESCS -> EOMS: create order
+activate EOMS
+
+EOMS -> EOMS: check order duplication
+
+EOMS -> EPCS: get products
+activate EPCS
+
+EPCS -> PDB: get products
+EPCS <- PDB: products
+
+EOMS <-- EPCS: products
+deactivate EPCS
+
+EOMS -> EIMS: check product existence
+activate EIMS
+
+EIMS -> EIMS: hold products inventory
+EOMS <-- EIMS: check product existence ack
+deactivate EIMS
+
+EOMS -> EOMS: compose order
+
+EOMS -> ODB: persist order
+EOMS <-- ODB: persist order ack
+
+EOMS -> EPGS: init transaction
+activate EPGS
+
+EPGS -> EPGS: compose transaction
+
+EPGS -> EPGS: set status of transaction
+
+EPGS -> TDB: persist transaction
+EPGS <-- TDB: persist transaction ack
+
+EPGS -> N: send notification
+
+EOMS <- EPGS: init transaction ack
+deactivate EPGS
+
+EOMS -> N: send notification
+
+ESCS <-- EOMS: create order ack
+deactivate EOMS
+
+ESCS -> CDB: clean cart
+ESCS <-- CDB: clean ack
+
+U <-- ESCS: checkout response
+
+deactivate ESCS
+
+@enduml
