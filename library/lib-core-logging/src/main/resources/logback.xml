@@ -1,0 +1,17 @@
+<configuration>
+    <appender name="data-mask"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="com.sokima.lib.corelogging.PatternMaskingLayout">
+                <fields>email,password,ssn,address,phone,role</fields>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}
+                    - %msg%n
+                </pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="data-mask"/>
+    </root>
+</configuration>
