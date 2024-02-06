@@ -34,7 +34,7 @@ public final class CheckoutUseCase {
                 .doOnNext(cart -> {
                     log.debug("Found Cart[value={}] to being checkout.", cart);
                     final var isValid = cartRuleValidatorChain.validateCart(cart);
-                    // rollback transaction, how to use @Transactional
+                    // rollback transaction
                 })
                 .map(cart -> CheckoutInitiationMapper.composeInitiateOrderCreation(cart.userId(), cart.productIds(), shippingAddress, paymentMethod))
                 .flatMap(checkoutInitiationService::initiateOrderCreation)

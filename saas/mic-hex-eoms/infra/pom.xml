@@ -25,24 +25,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sokima.lib</groupId>
-            <artifactId>grpc-server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sokima.lib</groupId>
-            <artifactId>grpc-envelope-util</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sokima.lib</groupId>
-            <artifactId>core-logging</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.sokima.saas</groupId>
             <artifactId>mic-hex-eoms-usecase</artifactId>
             <version>${project.parent.version}</version>
