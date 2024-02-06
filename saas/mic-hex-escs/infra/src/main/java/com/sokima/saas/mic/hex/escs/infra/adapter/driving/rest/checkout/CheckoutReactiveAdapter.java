@@ -8,10 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @DrivingAdapter
+@RestController
 @RequestMapping("api/v1")
 public class CheckoutReactiveAdapter implements CartCheckoutReactiveApi {
 
@@ -36,6 +38,5 @@ public class CheckoutReactiveAdapter implements CartCheckoutReactiveApi {
                 .doOnError(ex -> log.warn("Error occurred while cart checkout: ", ex))
                 .doOnSuccess(x -> log.info("CartCheckoutRequest[cartId={},request={}] was processed successfully.", cartId, cartCheckoutRequest))
                 .log();
-
     }
 }
