@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Order as O
+participant EIMS
+database Inventory
+
+autonumber
+
+O -> EIMS: PutOnHoldRequest
+activate EIMS
+
+EIMS -> Inventory: find product
+EIMS <- Inventory: product
+
+EIMS -> EIMS: check product quantity
+
+EIMS -> EIMS: put on hold desired quantity
+
+EIMS -> EIMS: update available quantity of products
+
+EIMS -> Inventory: update inventory
+
+EIMS <- Inventory: update inventory ack
+
+EIMS -> EIMS: set auto hold releasing
+
+O <- EIMS: PutOnHoldResponse
+deactivate EIMS
+
+@enduml
