@@ -19,7 +19,7 @@ message Body {
 
 message Envelope {
   repeated Header header = 1;
-  repeated Body body = 2;
+  Body body = 2;
 }
 
 service UnaryEnvelopeRelayService {
