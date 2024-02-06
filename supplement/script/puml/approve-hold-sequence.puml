@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor EPGS
+participant EIMS
+database Inventory
+queue Notification as N
+
+autonumber
+
+EPGS -> EIMS: ApproveHoldRequest
+activate EIMS
+
+EIMS -> Inventory: find product
+EIMS <- Inventory: product
+
+EIMS -> EIMS: check product hold
+EIMS -> EIMS: unhold the product
+EIMS -> EIMS: update inventory product quantity
+EIMS -> Inventory: update inventory
+EIMS <- Inventory: update inventory ack
+EIMS --> N: ApproveHoldEvent
+
+EPGS <- EIMS: ApproveHoldResponse
+deactivate EIMS
+
+@enduml

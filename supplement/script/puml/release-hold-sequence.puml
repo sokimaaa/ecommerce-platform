@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Event as E
+participant EIMS
+database Inventory
+
+autonumber
+
+E -> EIMS: ReleaseHoldEvent
+activate EIMS
+
+EIMS -> Inventory: find product
+EIMS <- Inventory: product
+EIMS -> EIMS: check hold status of product
+EIMS -> EIMS: revert available product quantity
+EIMS -> Inventory: update inventory
+EIMS <- Inventory: update inventory ack
+
+deactivate EIMS
+
+@enduml
