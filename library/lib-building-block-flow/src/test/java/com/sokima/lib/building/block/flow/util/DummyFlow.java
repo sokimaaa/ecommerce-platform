@@ -1,6 +1,6 @@
 package com.sokima.lib.building.block.flow.util;
 
-import com.sokima.lib.core.flow.Flow;
+import com.sokima.lib.building.block.flow.Flow;
 import reactor.core.publisher.Flux;
 
 public final class DummyFlow implements Flow<Object, Object> {

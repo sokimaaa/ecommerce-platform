@@ -1,7 +1,7 @@
 package com.sokima.lib.building.block.flow;
 
+import com.sokima.lib.building.block.flow.exception.WrongFlowNameException;
 import com.sokima.lib.building.block.flow.util.DummyFlow;
-import com.sokima.lib.core.flow.exception.WrongFlowNameException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -59,6 +59,6 @@ class FlowTest {
     @ParameterizedTest
     void checkFlowNaming_WrongDelimiterSymbols_False(final String flow) {
         Mockito.doReturn(flow).when(dummyFlow).flow();
-        assertThrows(WrongFlowNameException.class, () -> dummyFlow.checkFlowNaming(), "Should be thrown for leading, preceding hyphen or numbers in flow name.");
+        assertThrows(WrongFlowNameException.class, () -> dummyFlow.checkFlowNaming(), "Should be thrown for wrong word delimiter.");
     }
 }

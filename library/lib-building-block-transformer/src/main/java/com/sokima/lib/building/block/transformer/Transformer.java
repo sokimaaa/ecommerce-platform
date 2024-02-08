@@ -1,4 +1,4 @@
-package com.sokima.lib.core.transformer;
+package com.sokima.lib.building.block.transformer;
 
 import com.sokima.lib.hex.architecture.annotation.DomainService;
 

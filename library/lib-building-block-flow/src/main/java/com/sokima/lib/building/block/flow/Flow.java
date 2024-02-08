@@ -1,4 +1,4 @@
-package com.sokima.lib.core.flow;
+package com.sokima.lib.building.block.flow;
 
 import com.sokima.lib.core.flow.exception.WrongFlowNameException;
 import com.sokima.lib.hex.architecture.annotation.UseCase;
