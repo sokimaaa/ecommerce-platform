@@ -1,6 +1,6 @@
 package com.sokima.lib.building.block.flow;
 
-import com.sokima.lib.core.flow.exception.WrongFlowNameException;
+import com.sokima.lib.building.block.flow.exception.WrongFlowNameException;
 import com.sokima.lib.hex.architecture.annotation.UseCase;
 import reactor.core.publisher.Flux;
 
@@ -22,7 +22,7 @@ public interface Flow<P, R> {
     /**
      * Does logic for the flow.
      */
-    Flux<R> doFlow(P payload);
+    Flux<R> doFlow(final P payload);
 
     /**
      * Helps to identify flow.

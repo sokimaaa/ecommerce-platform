@@ -1,6 +1,6 @@
 package com.sokima.lib.building.block.flow;
 
-import com.sokima.lib.core.flow.exception.DispatchingFlowException;
+import com.sokima.lib.building.block.flow.exception.DispatchingFlowException;
 import reactor.core.publisher.Flux;
 
 import java.util.List;
@@ -22,6 +22,6 @@ public final class FlowDispatcher {
     }
 
     public <T, R> Flux<R> dispatch(final T payload) {
-        throw new UnsupportedOperationException("not implemented"); // todo: implement dispatching logic
+        throw new DispatchingFlowException("not implemented"); // todo: implement dispatching logic
     }
 }
