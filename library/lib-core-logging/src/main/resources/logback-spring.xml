@@ -1,9 +1,12 @@
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="com.sokima.lib.corelogging.PatternMaskingLayout">
+                <fields>email,password,ssn,address,phone,role,PIN</fields>
+                <pattern>
                 <![CDATA[%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr([${appName:-unknown}]){magenta} %clr([traceId: %X{traceId:-n/a}]){magenta} %clr([spanId: %X{spanId:-n/a}]){magenta} %clr([pid: ${PID:- }]){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx]]>
-            </pattern>
+                </pattern>
+            </layout>
         </encoder>
     </appender>
 
