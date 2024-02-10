@@ -1,11 +1,13 @@
 package com.sokima.saas.mic.hex.escs.usecase.clean;
 
-import com.sokima.saas.mic.hex.escs.domain.model.record.CartRecord;
+import com.sokima.lib.ecommerce.java.domain.model.immutable.ImmutableCartImpl;
 import com.sokima.saas.mic.hex.escs.domain.persistent.port.inbound.cart.UpdateCartPersistentInPort;
 import com.sokima.saas.mic.hex.escs.domain.persistent.port.outbound.cart.FindCartPersistentOutPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
+
+import java.util.Collections;
 
 public final class CleanUseCase {
 
@@ -21,7 +23,12 @@ public final class CleanUseCase {
 
     public Mono<Boolean> clean(final Long cartId) {
         return findCartPersistent.findSingleCart(cartId)
-                .map(CartRecord::cleanedCart)
+                .map(cart -> ImmutableCartImpl.builder() // todo: create unary mapping Cart -> CleanedCart
+                        .cartId(cart.cartId())
+                        .userId(cart.userId())
+                        .productIds(Collections.emptySet())
+                        .build()
+                )
                 .doOnNext(cart -> log.debug("Start to clean all products in Cart[cartId={}]", cartId))
                 .flatMap(updateCartPersistent::updateCart)
                 .map(cleanedCart -> cleanedCart.productIds().isEmpty())

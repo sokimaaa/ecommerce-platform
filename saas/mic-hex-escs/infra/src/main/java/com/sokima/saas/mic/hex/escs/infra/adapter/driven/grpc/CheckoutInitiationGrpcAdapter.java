@@ -1,11 +1,11 @@
 package com.sokima.saas.mic.hex.escs.infra.adapter.driven.grpc;
 
+import com.sokima.lib.ecommerce.proto.domain.model.CompletionOrderCreation;
+import com.sokima.lib.ecommerce.proto.domain.model.InitiateOrderCreation;
 import com.sokima.lib.grpc.envelope.relay.api.v1.ReactorUnaryEnvelopeRelayServiceGrpc;
 import com.sokima.lib.grpc.envelope.util.EnvelopeUnwrapUtil;
 import com.sokima.lib.grpc.envelope.util.EnvelopeWrapUtil;
 import com.sokima.lib.hex.architecture.annotation.DrivenAdapter;
-import com.sokima.lib.proto.spec.eoms.CompletionOrderCreation;
-import com.sokima.lib.proto.spec.eoms.InitiateOrderCreation;
 import com.sokima.saas.mic.hex.escs.domain.service.CheckoutInitiationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.sokima.saas.mic.hex.escs.infra.adapter.driving.rest.checkout.mapper;
 
-import com.sokima.lib.proto.spec.eoms.CompletionOrderCreation;
+import com.sokima.lib.ecommerce.proto.domain.model.CompletionOrderCreation;
 import com.sokima.saas.mic.hex.escs.spec.rest.checkout.v1.response.CartCheckoutResponse;
 
 public interface CheckoutResponseMapper {

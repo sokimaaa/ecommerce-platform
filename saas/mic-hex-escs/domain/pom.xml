@@ -20,14 +20,20 @@
 
         <dependency>
             <groupId>com.sokima.lib</groupId>
-            <artifactId>proto-spec-escs</artifactId>
+            <artifactId>building-block-transformer</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.sokima.lib</groupId>
-            <artifactId>proto-spec-eoms</artifactId>
+            <artifactId>ecommerce-bunch-domain-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sokima.saas</groupId>
+            <artifactId>mic-hex-escs-spec</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>

@@ -49,12 +49,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.sokima.saas</groupId>
-            <artifactId>mic-hex-escs-spec</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>

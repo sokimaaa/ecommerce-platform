@@ -1,7 +1,7 @@
 package com.sokima.saas.mic.hex.escs.infra.adapter.driven.persistent;
 
+import com.sokima.lib.ecommerce.java.domain.model.Cart;
 import com.sokima.lib.hex.architecture.annotation.DrivenAdapter;
-import com.sokima.saas.mic.hex.escs.domain.model.Cart;
 import com.sokima.saas.mic.hex.escs.domain.persistent.port.inbound.cart.UpdateCartPersistentInPort;
 import reactor.core.publisher.Mono;
 
