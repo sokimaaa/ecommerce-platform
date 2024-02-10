@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface MaskedFactory {
 
-    public Masked create(final List<String> fields);
+    SupportMasking create(final List<String> fields);
 }

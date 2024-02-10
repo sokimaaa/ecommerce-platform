@@ -5,8 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.sokima.lib.corelogging.service.Masked;
-
+import com.sokima.lib.corelogging.service.SupportMasking;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -23,7 +22,7 @@ class JsonMaskTest {
 
     private static final String correctJsonArray = "[{\"id\":123,\"email\":\"test_mail@i.ua\",\"password\":\"test#String_0\",\"isOver18\":true,\"totalPrice\":8.00}]";
 
-    private static Masked jsonMask;
+    private static SupportMasking jsonMask;
 
     @BeforeAll
     static void setUpBeforeClass() {

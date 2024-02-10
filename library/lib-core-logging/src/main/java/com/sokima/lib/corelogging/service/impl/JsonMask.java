@@ -1,12 +1,13 @@
 package com.sokima.lib.corelogging.service.impl;
 
+import com.sokima.lib.corelogging.service.SupportMasking;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class JsonMask extends GeneralMask {
+public final class JsonMask extends GeneralMask implements SupportMasking {
 
     private static final String JSON_REPLACEMENT_REGEX = String.format("\"$1\"$2:$3\"%s\"$6", MASK);
 

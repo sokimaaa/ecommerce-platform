@@ -41,8 +41,6 @@ public final class ToStringMask extends GeneralMask {
      * key-value pair.
      */
 
-    //private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(,|\\))|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
-    //  private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, |\\))|([-\\.\\w\\d@]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
     private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, )|([!#$&\\'+,-./:;<=>?@^_`|~\\w\\d]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
 
     public ToStringMask(final List<String> fields) {
@@ -54,11 +52,5 @@ public final class ToStringMask extends GeneralMask {
     public String maskMessage(final String message) {
 
         return maskMessage(message, TO_STRING_REPLACEMENT_REGEX);
-    }
-
-    @Override
-    public boolean isSupport(final String message) {
-        //need to implement
-        return true;
     }
 }
