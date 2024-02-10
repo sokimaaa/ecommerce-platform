@@ -1,0 +1,2 @@
+com.sokima.lib.corelogging.service.impl.JsonMaskFactory
+com.sokima.lib.corelogging.service.impl.ToStringMaskFactory
