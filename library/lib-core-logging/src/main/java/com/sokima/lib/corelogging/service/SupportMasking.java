@@ -1,6 +1,5 @@
 package com.sokima.lib.corelogging.service;
 
-public interface SupportMasking extends Maskable {
-    
-    boolean isSupport(String message);
+public interface SupportMasking extends Maskable, Supportable {
+
 }
