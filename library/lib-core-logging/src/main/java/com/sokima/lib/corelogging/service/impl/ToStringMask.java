@@ -13,14 +13,14 @@ public final class ToStringMask extends GeneralMask {
      * (%s): This part specifies a placeholder. =: This part matches the equal sign
      * "=" literally.
      *
-     * ([^\"]+?(, |\\))|(!#$&\\'+,-./:;<=>?@^_`|~\\w\\d@]*)|((\\d*\\.)?\\d+)|true|false:
+     * ([^\"]+?(, |\\))|(!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d@]*)|((\\d*\\.)?\\d+)|true|false:
      *
      * This part is a set of alternatives separated by the pipe | character,
      * indicating that any of these alternatives can be matched: [^\"]+?(, |\\)):
      * This matches one or more characters that are not double quotes, followed by
      * either a comma and a space , or a backslash \.
      *
-     * ([!#$&\\'+,-./:;<=>?@^_`|~\\w\\d@]*): This matches a sequence of characters that can include
+     * ([!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d@]*): This matches a sequence of characters that can include
      * letters, digits, dots, hyphens, underscores, and special symbols.
      *
      * ((\\d*\\.)?\\d+): This matches a decimal number. Let's break it down further:
@@ -41,7 +41,7 @@ public final class ToStringMask extends GeneralMask {
      * key-value pair.
      */
 
-    private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, )|([!#$&\\'+,-./:;<=>?@^_`|~\\w\\d]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
+    private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, | \\])|([!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
 
     public ToStringMask(final List<String> fields) {
 
@@ -52,5 +52,11 @@ public final class ToStringMask extends GeneralMask {
     public String maskMessage(final String message) {
 
         return maskMessage(message, TO_STRING_REPLACEMENT_REGEX);
+    }
+
+    @Override
+    public Object[] maskArguments(Object[] args) {
+
+        return maskArguments(args, TO_STRING_REPLACEMENT_REGEX);
     }
 }

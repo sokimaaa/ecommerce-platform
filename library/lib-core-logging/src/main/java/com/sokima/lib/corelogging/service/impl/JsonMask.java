@@ -1,6 +1,7 @@
 package com.sokima.lib.corelogging.service.impl;
 
 import com.sokima.lib.corelogging.service.SupportMasking;
+
 import java.util.List;
 
 import org.json.JSONArray;
@@ -64,6 +65,12 @@ public final class JsonMask extends GeneralMask implements SupportMasking {
     public String maskMessage(final String message) {
 
         return maskMessage(message, JSON_REPLACEMENT_REGEX);
+    }
+
+    @Override
+    public Object[] maskArguments(final Object[] args) {
+
+        return maskArguments(args, JSON_REPLACEMENT_REGEX);
     }
 
     @Override
