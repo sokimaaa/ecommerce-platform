@@ -13,10 +13,10 @@ public final class ToStringMask extends GeneralMask {
      * (%s): This part specifies a placeholder. =: This part matches the equal sign
      * "=" literally.
      *
-     * ([^\"]+?(, |\\))|(!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d@]*)|((\\d*\\.)?\\d+)|true|false:
+     * ([^\"]+?(, |\\])|(!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d@]*)|((\\d*\\.)?\\d+)|true|false:
      *
      * This part is a set of alternatives separated by the pipe | character,
-     * indicating that any of these alternatives can be matched: [^\"]+?(, |\\)):
+     * indicating that any of these alternatives can be matched: [^\"]+?(, |\\])):
      * This matches one or more characters that are not double quotes, followed by
      * either a comma and a space , or a backslash \.
      *
@@ -41,7 +41,7 @@ public final class ToStringMask extends GeneralMask {
      * key-value pair.
      */
 
-    private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, | \\])|([!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
+    private static final String TO_STRING_PATTERN = "(?i)(%s)=([^\"]+?(, |\\])|([!#$&\\'+,-./:;<=>?@^_`|~\\(\\)\\{\\}\\w\\d]*)|((\\d*\\.)?\\d+)|true|false)([\\s]*)";
 
     public ToStringMask(final List<String> fields) {
 
