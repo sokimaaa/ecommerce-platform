@@ -1,10 +1,5 @@
 package com.sokima.lib.corelogging.service.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.sokima.lib.corelogging.service.SupportMasking;
 
 import java.util.List;
@@ -19,6 +14,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class JsonMaskTest {
 

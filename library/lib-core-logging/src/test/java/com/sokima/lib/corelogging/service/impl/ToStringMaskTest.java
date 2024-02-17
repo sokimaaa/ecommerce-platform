@@ -1,7 +1,7 @@
 package com.sokima.lib.corelogging.service.impl;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.sokima.lib.corelogging.service.Maskable;
 
