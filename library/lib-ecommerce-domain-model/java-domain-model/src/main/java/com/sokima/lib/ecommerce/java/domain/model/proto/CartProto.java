@@ -3,6 +3,7 @@ package com.sokima.lib.ecommerce.java.domain.model.proto;
 import com.sokima.lib.ecommerce.proto.domain.model.Cart;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 public final class CartProto implements com.sokima.lib.ecommerce.java.domain.model.Cart {
@@ -23,8 +24,8 @@ public final class CartProto implements com.sokima.lib.ecommerce.java.domain.mod
     }
 
     @Override
-    public Set<Long> productIds() {
-        return Set.copyOf(delegate.getProductIdsList());
+    public List<Long> productIds() {
+        return delegate.getProductIdsList();
     }
 
     @Override

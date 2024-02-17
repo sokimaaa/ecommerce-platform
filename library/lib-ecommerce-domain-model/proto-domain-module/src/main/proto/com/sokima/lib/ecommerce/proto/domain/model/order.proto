@@ -29,19 +29,15 @@ message Item {
   float price = 5;
 }
 
-message InitiateOrderCreation {
+message OrderInitiationRequest {
   int64 userId = 1;
-  repeated int64 productIds = 2;
+  map<int64, int32> productIdQuantity = 2;
   string shippingAddress = 3;
   string paymentMethod = 4;
 }
 
-message CompletionOrderCreation {
-  int64 cartId = 1;
-
-  int64 transactionId = 2;
-
-  int64 orderId = 3;
-
-  bool ok = 4;
+message OrderInitiationResponse {
+  int64 transactionId = 1;
+  int64 orderId = 2;
+  bool ok = 3;
 }
