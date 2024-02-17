@@ -11,15 +11,15 @@ import org.springframework.context.annotation.Configuration;
 public class GrpcBridgeConfiguration {
 
     @EnvelopeStub
-    ReactorUnaryEnvelopeRelayServiceGrpc.ReactorUnaryEnvelopeRelayServiceStub checkoutInitiationStub(
+    ReactorUnaryEnvelopeRelayServiceGrpc.ReactorUnaryEnvelopeRelayServiceStub eomsStub(
             final ChannelFactory channelFactory,
-            final GrpcClientHolder checkoutInitiationClientHolder
+            final GrpcClientHolder eomsClientHolder
     ) {
-        return ReactorUnaryEnvelopeRelayServiceGrpc.newReactorStub(channelFactory.newNettyChannel(checkoutInitiationClientHolder));
+        return ReactorUnaryEnvelopeRelayServiceGrpc.newReactorStub(channelFactory.newNettyChannel(eomsClientHolder));
     }
 
-    @EnvelopeProperties(property = "grpc.client.checkout-initiation.holder")
-    GrpcClientHolder checkoutInitiationClientHolder() {
+    @EnvelopeProperties(property = "grpc.client.eoms.holder")
+    GrpcClientHolder eomsClientHolder() {
         return new GrpcClientHolder();
     }
 }
