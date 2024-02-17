@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.sokima.lib.ecommerce.proto.domain.model;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "com.sokima.lib.ecommerce.proto.domain.model";
+
+message User {
+  int64 userId = 1;
+  string username = 2;
+  string role = 3;
+  string email = 4;
+  string password = 5;
+  int64 profileId = 6;
+  google.protobuf.Timestamp createdAt = 7;
+}
+
+message Profile {
+  int64 profileId = 1;
+  int64 userId = 2;
+}

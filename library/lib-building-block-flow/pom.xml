@@ -28,6 +28,12 @@
 
         <dependency>
             <groupId>com.sokima.lib</groupId>
+            <artifactId>building-block-transformer</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sokima.lib</groupId>
             <artifactId>hexagonal-architecture-annotation</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

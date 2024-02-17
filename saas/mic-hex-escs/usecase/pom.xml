@@ -32,6 +32,18 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sokima.lib</groupId>
+            <artifactId>building-block-flow</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sokima.lib</groupId>
+            <artifactId>building-block-sender</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.9.2</version>
