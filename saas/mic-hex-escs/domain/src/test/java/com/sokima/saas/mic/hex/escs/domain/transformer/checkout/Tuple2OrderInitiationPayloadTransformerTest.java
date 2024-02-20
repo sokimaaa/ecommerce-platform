@@ -28,13 +28,13 @@ class Tuple2OrderInitiationPayloadTransformerTest {
 
         Assertions.assertNotNull(actual, "Payload shouldn't be null after transforming.");
 
-        Assertions.assertNotNull(actual.cartId(), "CartId of payload shouldn't be bull after transforming.");
+        Assertions.assertNotNull(actual.cartId(), "CartId of payload shouldn't be null after transforming.");
         Assertions.assertEquals(10L, actual.cartId(), "CartId of payload didn't match after transforming.");
 
-        Assertions.assertNotNull(actual.shippingAddress(), "Shipping address of payload shouldn't be bull after transforming.");
+        Assertions.assertNotNull(actual.shippingAddress(), "Shipping address of payload shouldn't be null after transforming.");
         Assertions.assertEquals("2911 Jesse Walk, Howellfurt, RI 69089", actual.shippingAddress(), "Shipping address of payload didn't match after transforming.");
 
-        Assertions.assertNotNull(actual.shippingAddress(), "Payment method of payload shouldn't be bull after transforming.");
+        Assertions.assertNotNull(actual.shippingAddress(), "Payment method of payload shouldn't be null after transforming.");
         Assertions.assertEquals("PAYPAL", actual.paymentMethod(), "Payment method of payload didn't match after transforming.");
     }
 }
