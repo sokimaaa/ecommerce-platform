@@ -39,5 +39,6 @@ message OrderInitiationRequest {
 message OrderInitiationResponse {
   int64 transactionId = 1;
   int64 orderId = 2;
-  bool ok = 3;
+  repeated Item reservedItems = 3;
+  bool ok = 4;
 }

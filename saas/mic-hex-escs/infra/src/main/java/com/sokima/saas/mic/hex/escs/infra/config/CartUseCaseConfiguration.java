@@ -1,5 +1,7 @@
 package com.sokima.saas.mic.hex.escs.infra.config;
 
+import com.sokima.lib.building.block.flow.Flow;
+import com.sokima.lib.building.block.flow.enricher.ResponseFlowEnricher;
 import com.sokima.lib.building.block.sender.RequestMessageSender;
 import com.sokima.lib.building.block.transformer.Transformer;
 import com.sokima.lib.ecommerce.java.domain.model.Cart;
@@ -9,11 +11,13 @@ import com.sokima.lib.hex.architecture.annotation.DomainService;
 import com.sokima.lib.hex.architecture.annotation.UseCase;
 import com.sokima.saas.mic.hex.escs.domain.payload.clean.CleanCartPayload;
 import com.sokima.saas.mic.hex.escs.domain.payload.initiation.EnrichedOrderInitiationPayload;
+import com.sokima.saas.mic.hex.escs.domain.payload.initiation.EnrichedOrderInitiationResponse;
 import com.sokima.saas.mic.hex.escs.domain.payload.initiation.OrderInitiationPayload;
 import com.sokima.saas.mic.hex.escs.domain.persistent.port.inbound.cart.UpdateCartPersistentInPort;
 import com.sokima.saas.mic.hex.escs.domain.persistent.port.outbound.cart.FindCartPersistentOutPort;
-import com.sokima.saas.mic.hex.escs.domain.transformer.checkout.OrderInitiationResponse2CartCleanPayloadTransformer;
+import com.sokima.saas.mic.hex.escs.domain.transformer.checkout.EnrichedOrderInitiationResponse2CartCleanPayloadTransformer;
 import com.sokima.saas.mic.hex.escs.domain.transformer.checkout.Tuple2CartCheckoutResponseTransformer;
+import com.sokima.saas.mic.hex.escs.domain.transformer.checkout.Tuple2EnrichedOrderInitiationResponseTransformer;
 import com.sokima.saas.mic.hex.escs.domain.transformer.checkout.Tuple2OrderInitiationPayloadTransformer;
 import com.sokima.saas.mic.hex.escs.domain.transformer.clean.Tuple2CleanedCartTransformer;
 import com.sokima.saas.mic.hex.escs.domain.transformer.clean.Tuple2CleanerResponseTransformer;
@@ -41,19 +45,27 @@ public class CartUseCaseConfiguration {
 
         @UseCase
         CartCheckoutFlow cartCheckoutFlow(
-                final OrderInitiationFlow orderInitiationFlow,
-                final CartCleanFlow cartCleanFlow,
+                final Flow<OrderInitiationPayload, EnrichedOrderInitiationResponse> orderInitiationEnrichedFlow,
+                final Flow<CleanCartPayload, CartCleanerResponse> cartCleanFlow,
                 final Transformer<Tuple2<Long, CartCheckoutRequest>, OrderInitiationPayload> tuple2OrderInitiationPayload,
-                final Transformer<OrderInitiationResponse, CleanCartPayload> orderInitiationResponse2CartCleanPayload,
-                final Transformer<Tuple2<OrderInitiationResponse, CartCleanerResponse>, CartCheckoutResponse> tuple2CartCheckoutResponse
+                final Transformer<EnrichedOrderInitiationResponse, CleanCartPayload> orderInitiationResponse2CartCleanPayload,
+                final Transformer<Tuple2<EnrichedOrderInitiationResponse, CartCleanerResponse>, CartCheckoutResponse> tuple2CartCheckoutResponse
         ) {
             return new CartCheckoutFlow(
-                    orderInitiationFlow,
+                    orderInitiationEnrichedFlow,
                     cartCleanFlow,
                     tuple2OrderInitiationPayload,
                     orderInitiationResponse2CartCleanPayload,
                     tuple2CartCheckoutResponse
             );
+        }
+
+        @UseCase
+        ResponseFlowEnricher<OrderInitiationPayload, OrderInitiationResponse, EnrichedOrderInitiationResponse> orderInitiationEnrichedFlow(
+                final Flow<OrderInitiationPayload, OrderInitiationResponse> orderInitiationFlow,
+                final Transformer<Tuple2<OrderInitiationPayload, OrderInitiationResponse>, EnrichedOrderInitiationResponse> orderInitiationEnricher
+        ) {
+            return new ResponseFlowEnricher<>(orderInitiationFlow, orderInitiationEnricher);
         }
 
         @DomainService
@@ -62,13 +74,18 @@ public class CartUseCaseConfiguration {
         }
 
         @DomainService
-        Transformer<OrderInitiationResponse, CleanCartPayload> orderInitiationResponse2CartCleanPayloadTransformer() {
-            return new OrderInitiationResponse2CartCleanPayloadTransformer();
+        Transformer<EnrichedOrderInitiationResponse, CleanCartPayload> enrichedOrderInitiationResponse2CartCleanPayloadTransformer() {
+            return new EnrichedOrderInitiationResponse2CartCleanPayloadTransformer();
         }
 
         @DomainService
-        Transformer<Tuple2<OrderInitiationResponse, CartCleanerResponse>, CartCheckoutResponse> tuple2CartCheckoutResponseTransformer() {
+        Transformer<Tuple2<EnrichedOrderInitiationResponse, CartCleanerResponse>, CartCheckoutResponse> tuple2CartCheckoutResponseTransformer() {
             return new Tuple2CartCheckoutResponseTransformer();
+        }
+
+        @DomainService
+        Transformer<Tuple2<OrderInitiationPayload, OrderInitiationResponse>, EnrichedOrderInitiationResponse> tuple2EnrichedOrderInitiationResponseTransformer() {
+            return new Tuple2EnrichedOrderInitiationResponseTransformer();
         }
     }
 
