@@ -17,7 +17,6 @@ public final class Tuple2CleanerResponseTransformer implements Transformer<Tuple
 
     @Override
     public CartCleanerResponse transform(final Tuple2<CleanCartPayload, Cart> input) {
-
         log.debug("Transforming tuple with CleanCartPayload and Cart: {}", input);
         return Tuple2CleanerResponseMapper.INSTANCE.map(input);
     }
