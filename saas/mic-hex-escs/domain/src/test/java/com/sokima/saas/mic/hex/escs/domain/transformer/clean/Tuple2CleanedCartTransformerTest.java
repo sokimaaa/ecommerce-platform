@@ -8,7 +8,6 @@ import com.sokima.saas.mic.hex.escs.domain.payload.clean.CleanCartPayload;
 import java.time.Instant;
 import java.util.List;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,48 +18,40 @@ class Tuple2CleanedCartTransformerTest {
 
     @BeforeEach
     void setUp() {
-
         this.tuple2CleanedCart = new Tuple2CleanedCartTransformer();
     }
 
     @Test
     void transform_mappingNonNullDeleteAllProducts_True() {
-
-        final Long cartId = 123L;
-        final List<Long> allProductsInCart = List.of(10L, 10L, 1L, 3L);
+        final var cartId = 123L;
+        final var allProductsInCart = List.of(10L, 10L, 1L, 3L);
         final CleanCartPayload cleanCartPaylod = new CleanCartPayload(cartId, allProductsInCart);
         final Cart cart = new CartRecord(cartId, cartId, Instant.now(), allProductsInCart);
         final var input = MergingTransformer.merge(cleanCartPaylod, cart);
         final var actual = tuple2CleanedCart.transform(input);
-        final var expected = new CartRecord(cartId, cartId, Instant.now(), List.of());
 
         Assertions.assertNotNull(actual, "Object shouldn't be null after transforming.");
-        Assertions.assertNotNull(actual.cartId(), "CartId shouldn't be null after transforming.");
-        Assertions.assertNotNull(actual.updater(), "Updater shouldn't be null after transforming.");
-        Assertions.assertNotNull(actual.userId(), "UserId shouldn't be null after transforming.");
-        Assertions.assertNotNull(actual.updatedAt(), "UdpatedAt shouldn't be null after transforming.");
-        Assertions.assertNotNull(actual.productIds(), "List of product Ids shouldn't be null after transforming.");
 
-        EqualsBuilder.reflectionEquals(expected, actual);
+        Assertions.assertNotNull(actual.cartId(), "CartId shouldn't be null after transforming.");
+        Assertions.assertEquals(123L, actual.cartId(), "CartId after transforming didn't match.");
+        Assertions.assertNotNull(actual.userId(), "UserId shouldn't be null after transforming.");
+        Assertions.assertEquals(123L, actual.userId(), "UserId after transforming didn't match.");
+
+        Assertions.assertNotNull(actual.productIds(), "List of product Ids shouldn't be null after transforming.");
+        Assertions.assertTrue(actual.productIds().isEmpty(), "List of products didn't empty after transformation.");
     }
 
     @Test
     void transform_mappingNonNullDelete1RepeatedProduct_True() {
-
-        final Long cartId = 123L;
-        final List<Long> allProductsInCart = List.of(10L, 10L, 1L, 3L);
-        final List<Long> deletedProducts = List.of(10L);
+        final var cartId = 123L;
+        final var allProductsInCart = List.of(10L, 10L, 1L, 3L);
+        final var deletedProducts = List.of(10L);
         final CleanCartPayload cleanCartPaylod = new CleanCartPayload(cartId, deletedProducts);
         final Cart cart = new CartRecord(cartId, cartId, Instant.now(), allProductsInCart);
         final var input = MergingTransformer.merge(cleanCartPaylod, cart);
         final var actual = tuple2CleanedCart.transform(input);
-        final var expected = new CartRecord(cartId, cartId, Instant.now(), List.of(10L, 1L, 3L));
 
         Assertions.assertNotNull(actual, "Object shouldn't be null after transforming.");
-
-        int transformedListSize = actual.productIds().size();
-        Assertions.assertEquals(3, transformedListSize, "Size of transformed list didn't match");
-
-        EqualsBuilder.reflectionEquals(expected, actual);
+        Assertions.assertEquals(3, actual.productIds().size(), "Size of transformed list didn't match");
     }
 }
