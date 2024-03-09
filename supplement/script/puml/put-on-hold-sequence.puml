@@ -8,7 +8,7 @@ database Inventory
 autonumber
 
 O -> EIMS: PutOnHoldRequest
-activate EIMS
+activate EIMSГ
 
 EIMS -> Inventory: find product
 EIMS <- Inventory: product
