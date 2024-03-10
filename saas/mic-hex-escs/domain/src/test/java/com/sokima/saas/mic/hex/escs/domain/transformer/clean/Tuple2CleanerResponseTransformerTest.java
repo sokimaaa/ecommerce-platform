@@ -1,16 +1,15 @@
 package com.sokima.saas.mic.hex.escs.domain.transformer.clean;
 
 import com.sokima.lib.building.block.transformer.MergingTransformer;
-import com.sokima.lib.ecommerce.java.domain.model.Cart;
 import com.sokima.lib.ecommerce.java.domain.model.record.CartRecord;
 import com.sokima.saas.mic.hex.escs.domain.payload.clean.CleanCartPayload;
-
-import java.time.Instant;
-import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.Instant;
+import java.util.Collections;
+import java.util.List;
 
 class Tuple2CleanerResponseTransformerTest {
 
@@ -22,54 +21,46 @@ class Tuple2CleanerResponseTransformerTest {
     }
 
     @Test
-    void transform_mappingValid_True() {
-        final var cartId = 123L;
-        final var allProductsInCart = List.of(1L, 2L, 3L, 3L, 3L);
-        final var deletedProducts = List.of(1L, 2L, 3L, 3L);
-        final Cart cart = new CartRecord(cartId, cartId, Instant.now(), allProductsInCart);
-        final CleanCartPayload cartPayload = new CleanCartPayload(cartId, deletedProducts);
-        final var input = MergingTransformer.merge(cartPayload, cart);
-        final var actual = tuple2CleanerResponse.transform(input);
+    void transform_fullClean_validCleanerResponse() {
+        final var cartBeforeClean = new CartRecord(1L, 2L, Instant.MIN, List.of(1L, 2L, 3L));
+        final var updatedCart = new CartRecord(1L, 2L, Instant.MIN, Collections.emptyList());
+        final var cleanCartPayload = new CleanCartPayload(1L, List.of(1L, 2L, 3L));
 
-        Assertions.assertNotNull(actual, "Object shouldn't be null after transforming.");
-        Assertions.assertEquals(123L, actual.getCartId(), "CartId after transforming didn't match.");
-        Assertions.assertEquals(4, actual.getCleanedProductIds().size(), "Product ids list size didn't match.");
-        // TODO: Assertions.assertTrue(actual.getOk(), "Boolean status after transforming corrupted.");
+        final var actual = tuple2CleanerResponse.transform(MergingTransformer.merge(cleanCartPayload, updatedCart));
+
+        Assertions.assertNotNull(actual, "Response can't be null after transformation.");
+        Assertions.assertEquals(1L, actual.getCartId(), "CartId didn't match after transformation.");
+        Assertions.assertFalse(actual.getCleanedProductIds().isEmpty(), "Cleaned Product Ids is empty after transformation with full clean.");
+        Assertions.assertIterableEquals(List.of(1L, 2L, 3L), actual.getCleanedProductIds(), "Cleaned Product Ids didn't match after transformation.");
+        Assertions.assertTrue(actual.getOk(), "Cart was updated, but response return false.");
     }
 
     @Test
-    void transform_mappingWrong_False() {
-        final var cartId = 123L;
-        final var allProductsInCart = List.of(1L, 2L, 3L, 3L, 3L);
-        final var deletedProducts = List.of(1L, 2L, 3L, 3L);
-        final Cart cart = new CartRecord(cartId, cartId, Instant.now(), allProductsInCart);
-        final CleanCartPayload cartPayload = new CleanCartPayload(cartId, deletedProducts);
-        final var input = MergingTransformer.merge(cartPayload, cart);
-        final var actual = tuple2CleanerResponse.transform(input);
+    void transform_partialClean_validCleanerResponse() {
+        final var cartBeforeClean = new CartRecord(1L, 2L, Instant.MIN, List.of(1L, 2L, 3L, 3L));
+        final var updatedCart = new CartRecord(1L, 2L, Instant.MIN, List.of(3L));
+        final var cleanCartPayload = new CleanCartPayload(1L, List.of(1L, 2L, 3L));
 
-        Assertions.assertNotNull(actual, "Object shouldn't be null after transforming.");
-        Assertions.assertEquals(123L, actual.getCartId(), "CartId after transforming didn't match.");
-        Assertions.assertEquals(4, actual.getCleanedProductIds().size(), "Product ids list size didn't match.");
-        Assertions.assertFalse(actual.getOk(), "Boolean status after transforming corrupted.");
+        final var actual = tuple2CleanerResponse.transform(MergingTransformer.merge(cleanCartPayload, updatedCart));
 
-        Assertions.assertNotEquals(List.of(3L, 3L), actual.getCleanedProductIds(), "Transformation went wrong, lists shouldn't match.");
+        Assertions.assertNotNull(actual, "Response can't be null after transformation.");
+        Assertions.assertEquals(1L, actual.getCartId(), "CartId didn't match after transformation.");
+        Assertions.assertFalse(actual.getCleanedProductIds().isEmpty(), "Cleaned Product Ids is empty after transformation with full clean.");
+        Assertions.assertIterableEquals(List.of(1L, 2L, 3L), actual.getCleanedProductIds(), "Cleaned Product Ids didn't match after transformation.");
+        Assertions.assertTrue(actual.getOk(), "Cart was updated, but response return false.");
     }
 
     @Test
-    void transform_mappingWrong2_False() {
-        final var cartId = 123L;
-        final var allProductsInCart = List.of(1L, 2L, 3L, 3L, 3L);
-        final var deletedProducts = List.of(1L, 2L, 3L, 3L);
-        final Cart cart = new CartRecord(cartId, cartId, Instant.now(), allProductsInCart);
-        final CleanCartPayload cartPayload = new CleanCartPayload(cartId, deletedProducts);
-        final var input = MergingTransformer.merge(cartPayload, cart);
-        final var actual = tuple2CleanerResponse.transform(input);
+    void transform_failedClean_invalidCleanerResponse() {
+        final var cartBeforeClean = new CartRecord(1L, 2L, Instant.MIN, List.of(1L, 2L, 3L));
+        final var updatedCart = new CartRecord(1L, 2L, Instant.MIN, List.of(1L, 2L, 3L));
+        final var cleanCartPayload = new CleanCartPayload(1L, List.of(1L, 2L, 3L));
 
-        Assertions.assertNotNull(actual, "Object shouldn't be null after transforming.");
-        Assertions.assertEquals(123L, actual.getCartId(), "CartId after transforming didn't match.");
-        Assertions.assertEquals(4, actual.getCleanedProductIds().size(), "Product ids list size didn't match.");
-        Assertions.assertFalse(actual.getOk(), "Boolean status after transforming corrupted.");
+        final var actual = tuple2CleanerResponse.transform(MergingTransformer.merge(cleanCartPayload, updatedCart));
 
-        Assertions.assertNotEquals(List.of(1L, 2L, 3L, 3L, 3L), actual.getCleanedProductIds(), "Transformation went wrong, lists shouldn't match.");
+        Assertions.assertNotNull(actual, "Response can't be null after transformation.");
+        Assertions.assertEquals(1L, actual.getCartId(), "CartId didn't match after transformation.");
+        Assertions.assertTrue(actual.getCleanedProductIds().isEmpty(), "Cleaned Product Ids should be empty after failed update of cart.");
+        Assertions.assertFalse(actual.getOk(), "Cart wasn't updated, but response return true.");
     }
 }
