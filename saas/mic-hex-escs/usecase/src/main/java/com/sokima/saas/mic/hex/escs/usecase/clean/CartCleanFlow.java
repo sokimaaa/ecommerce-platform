@@ -40,7 +40,7 @@ public final class CartCleanFlow implements Flow<CleanCartPayload, CartCleanerRe
         return Mono.just(payload)
                 .doOnNext(p -> log.info("Do cart clean flow with payload: {}", p))
                 .flatMap(
-                        cleanCartPayload -> findCartPersistent.findSingleCart(payload.cartId()).map(
+                        cleanCartPayload -> findCartPersistent.findSingleCart(cleanCartPayload.cartId()).map(
                                 cart -> MergingTransformer.merge(cleanCartPayload, cart)
                         )
                 )
