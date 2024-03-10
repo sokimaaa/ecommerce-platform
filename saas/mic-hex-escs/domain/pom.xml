@@ -78,6 +78,11 @@
                             <artifactId>mapstruct-processor</artifactId>
                             <version>1.5.5.Final</version>
                         </path>
+                        <path>
+                            <groupId>no.entur.mapstruct.spi</groupId>
+                            <artifactId>protobuf-spi-impl</artifactId>
+                            <version>1.44</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
